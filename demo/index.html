@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dungeon Forge UI Demo</title>
+<style>
+:root{
+ --gold:#d39b45;--gold2:#f0be62;--ink:#f2e7cf;--muted:#a89a84;
+ --panel:#0d1418;--panel2:#131c20;--line:#6e4b24;--bg:#080c0f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#050708;color:var(--ink);font-family:Georgia,serif;overflow:hidden}
+button,input{font:inherit}
+.screen{position:absolute;inset:0;display:none;overflow:auto}
+.screen.active{display:block}
+#menu{
+ background:
+ linear-gradient(#07101444,#050708cc),
+ url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/main_menu/menu_background.svg')
+ center/cover no-repeat;
+}
+.wrap{min-height:100%;display:grid;grid-template-columns:1.25fr .75fr;gap:5vw;align-items:center;padding:5vw}
+.logo{width:min(58vw,760px);display:block;margin:auto}
+.tag{text-align:center;color:#c8b89c;font-size:clamp(14px,1.8vw,23px);letter-spacing:.5px}
+.menu-panel{
+ padding:32px;border:2px solid #785329;border-radius:15px;
+ background:linear-gradient(145deg,#0a1013dd,#10181ccc);
+ box-shadow:0 28px 80px #000b,inset 0 0 35px #0008;
+}
+.game-btn{
+ width:100%;height:70px;border:0;color:var(--ink);font-weight:700;letter-spacing:1.6px;
+ background:url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/main_menu/button_normal.svg') center/100% 100% no-repeat;
+ margin:6px 0;cursor:pointer;text-shadow:0 2px 2px #000;
+}
+.game-btn:hover,.game-btn:focus{
+ background-image:url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/main_menu/button_hover.svg');
+ color:white;outline:0
+}
+.game-btn:active{
+ background-image:url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/main_menu/button_pressed.svg');
+ transform:translateY(1px)
+}
+.footer{text-align:center;color:#6e4b24;font:bold 12px Arial;letter-spacing:3px;margin-top:14px}
+
+#create{
+ background:
+ radial-gradient(circle at 25% 20%,#243038 0,#0e1519 28%,#070a0c 70%);
+ padding:24px;
+}
+.top{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.back{max-width:170px}
+.title{flex:1;text-align:center;font-size:clamp(28px,4vw,50px);letter-spacing:2px}
+.create-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;min-height:calc(100vh - 115px)}
+.frame{
+ position:relative;background:#0b1114aa;border:2px solid #765229;border-radius:18px;padding:24px;
+ box-shadow:0 22px 55px #0008,inset 0 0 40px #0006;
+}
+.portrait{
+ min-height:630px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+ background:
+ url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/character/portrait_frame.svg')
+ center/100% 100% no-repeat;
+}
+.knight{font-size:clamp(120px,20vw,280px);filter:drop-shadow(0 15px 16px #000)}
+.name{width:70%;background:#090d10;border:1px solid #634924;color:white;padding:14px;border-radius:6px;text-align:center}
+.section{color:var(--gold2);font:bold 14px Arial;letter-spacing:3px;margin:4px 0 10px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.card{
+ min-height:120px;color:#ddd;background:url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/character/card_normal.svg') center/100% 100% no-repeat;
+ border:0;cursor:pointer;padding:10px;font-weight:bold
+}
+.card.selected{
+ background-image:url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/character/card_selected.svg');
+ color:#ffe0a0
+}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{
+ display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:10px;
+ min-height:58px;padding:8px 18px;
+ background:url('https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/character/stat_row.svg') center/100% 100% no-repeat;
+}
+.stat button{width:38px;height:38px;border:1px solid #7c5729;background:#15191b;color:#efcb88;border-radius:5px}
+.stat b{min-width:26px;text-align:center;font-size:22px}
+.points{color:#efbd67;margin:12px 0}
+.create-button{margin-top:8px}
+.toast{
+ position:fixed;left:50%;bottom:24px;transform:translateX(-50%);padding:12px 20px;border:1px solid var(--gold);
+ background:#0a1013ee;color:#f5dfb4;border-radius:8px;opacity:0;pointer-events:none;transition:.25s
+}
+.toast.show{opacity:1}
+@media(max-width:900px){
+ html,body{overflow:auto}
+ .wrap{grid-template-columns:1fr;padding:28px 18px}
+ .logo{width:min(90vw,650px)}
+ .menu-panel{width:min(94vw,520px);margin:auto}
+ #create{padding:12px}
+ .create-grid{grid-template-columns:1fr}
+ .portrait{min-height:440px}
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .stats{grid-template-columns:1fr}
+ .title{font-size:25px}
+}
+</style>
+</head>
+<body>
+<section id="menu" class="screen active">
+  <div class="wrap">
+    <div>
+      <img class="logo" alt="Dungeon Forge" src="https://raw.githubusercontent.com/aydinsoylemez1903-beep/dungeon-forge/godot-mobile-ui/assets/ui/main_menu/logo_emblem.svg">
+      <div class="tag">Efsanen kazınmış taşta değil, verdiğin kararlarda yaşayacak.</div>
+    </div>
+    <div class="menu-panel">
+      <button class="game-btn" onclick="toast('Kayıt sistemi daha sonra bağlanacak')">DEVAM ET</button>
+      <button class="game-btn" onclick="show('create')">YENİ OYUN</button>
+      <button class="game-btn" onclick="toast('Envanter ekranı geliştiriliyor')">ENVANTER</button>
+      <button class="game-btn" onclick="toast('Görev ekranı geliştiriliyor')">GÖREVLER</button>
+      <button class="game-btn" onclick="toast('Harita ekranı geliştiriliyor')">DÜNYA HARİTASI</button>
+      <div class="footer">HER YOL BİR HİKÂYEYE ÇIKAR</div>
+    </div>
+  </div>
+</section>
+
+<section id="create" class="screen">
+  <div class="top">
+    <button class="game-btn back" onclick="show('menu')">‹ MENÜ</button>
+    <div class="title">KARAKTER OLUŞTUR</div>
+    <div style="width:170px"></div>
+  </div>
+  <div class="create-grid">
+    <div class="frame portrait">
+      <div class="knight">♞</div>
+      <input class="name" value="Aydın" maxlength="18">
+    </div>
+    <div class="frame">
+      <div class="section">IRK</div>
+      <div class="cards" id="raceCards">
+        <button class="card selected">İNSAN</button><button class="card">ELF</button><button class="card">CÜCE</button><button class="card">YARK</button>
+      </div>
+      <div class="section">SINIF</div>
+      <div class="cards" id="classCards">
+        <button class="card selected">SAVAŞÇI</button><button class="card">BÜYÜCÜ</button><button class="card">ROGUE</button><button class="card">RAHİP</button>
+      </div>
+      <div class="section">ÖZELLİKLER</div>
+      <div class="stats" id="stats"></div>
+      <div class="points" id="points">Kalan puan: 6</div>
+      <button class="game-btn create-button" onclick="toast('Karakter kaydedildi — demo')">KARAKTERİ OLUŞTUR</button>
+    </div>
+  </div>
+</section>
+<div class="toast" id="toast"></div>
+<script>
+const values={STR:14,DEX:10,CON:12,INT:8,WIS:10,CHA:10};let points=6;
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1600)}
+function renderStats(){
+ const root=document.getElementById('stats');root.innerHTML='';
+ Object.keys(values).forEach(k=>{
+  const d=document.createElement('div');d.className='stat';
+  d.innerHTML='<span>'+k+'</span><button data-k="'+k+'" data-d="-1">−</button><b>'+values[k]+'</b><button data-k="'+k+'" data-d="1">+</button>';root.appendChild(d)
+ });
+ document.getElementById('points').textContent='Kalan puan: '+points;
+ root.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+  const k=b.dataset.k,d=Number(b.dataset.d);
+  if(d>0&&points<=0)return;if(d<0&&values[k]<=8)return;
+  values[k]+=d;points-=d;renderStats()
+ })
+}
+function activateGroup(id){
+ document.querySelectorAll('#'+id+' .card').forEach(b=>b.onclick=()=>{document.querySelectorAll('#'+id+' .card').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')})
+}
+renderStats();activateGroup('raceCards');activateGroup('classCards');
+</script>
+</body>
+</html>
