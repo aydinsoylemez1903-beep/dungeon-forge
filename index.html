@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Dungeon Forge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">ÖZGÜN FANTASTİK RPG</p>
+        <h1>DUNGEON FORGE</h1>
+        <p class="sub">Zarını at. Kararını ver. Zindanın seni hatırlamasını sağla.</p>
+      </div>
+      <div class="d20">20</div>
+    </header>
+
+    <section id="creator" class="panel active">
+      <h2>Karakterini Yarat</h2>
+      <div class="grid two">
+        <label>Karakter adı<input id="name" maxlength="18" value="Aydın" /></label>
+        <label>Sınıf
+          <select id="class">
+            <option value="warden">Demir Muhafız</option>
+            <option value="shade">Gece Bıçağı</option>
+            <option value="arcanist">Rün Bilgesi</option>
+            <option value="oracle">Kül Kahini</option>
+          </select>
+        </label>
+        <label>Köken
+          <select id="origin">
+            <option value="north">Kuzey Sürgünü</option>
+            <option value="undercity">Altşehir Yetimi</option>
+            <option value="academy">Kırık Akademi</option>
+            <option value="wilds">Yaban Toprakları</option>
+          </select>
+        </label>
+        <label>Kader Eğilimi
+          <select id="fate">
+            <option>Cesur</option>
+            <option>Kurnaz</option>
+            <option>Merhametli</option>
+            <option>Acımasız</option>
+          </select>
+        </label>
+      </div>
+      <div id="classInfo" class="class-card"></div>
+      <div class="stats" id="stats"></div>
+      <div class="actions">
+        <button id="reroll" class="ghost">İstatistikleri Yeniden At</button>
+        <button id="start">Maceraya Başla</button>
+      </div>
+    </section>
+
+    <section id="game" class="panel">
+      <div class="hud">
+        <div>
+          <strong id="heroName">Kahraman</strong>
+          <span id="heroMeta"></span>
+        </div>
+        <div class="bars">
+          <span>HP <b id="hp"></b></span>
+          <span>Mana <b id="mana"></b></span>
+          <span>XP <b id="xp"></b></span>
+          <span>Altın <b id="gold"></b></span>
+        </div>
+      </div>
+
+      <article class="scene">
+        <p class="eyebrow">BÖLÜM I · KAYIP MAHZEN</p>
+        <h2 id="sceneTitle">Mühürlü Kapı</h2>
+        <p id="sceneText"></p>
+        <div id="checkBox" class="check-box hidden"></div>
+        <div id="choices" class="choices"></div>
+      </article>
+
+      <article id="combat" class="combat hidden">
+        <div class="combatant">
+          <div>
+            <p class="eyebrow">DÜŞMAN</p>
+            <h3 id="enemyName"></h3>
+          </div>
+          <strong id="enemyHp"></strong>
+        </div>
+        <div id="combatLog" class="log"></div>
+        <div class="choices combat-actions">
+          <button data-action="attack">Saldır</button>
+          <button data-action="skill">Özel Yetenek</button>
+          <button data-action="guard">Savun</button>
+          <button data-action="potion">İksir</button>
+        </div>
+      </article>
+
+      <div class="dice-tray">
+        <button id="diceBtn" class="dice-button">d20</button>
+        <div>
+          <small>SON ZAR</small>
+          <strong id="diceResult">—</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
