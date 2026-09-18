@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1c2a31"/><stop offset=".52" stop-color="#12191d"/><stop offset="1" stop-color="#07090a"/></linearGradient>
+ <radialGradient id="moon"><stop stop-color="#d7b56f" stop-opacity=".25"/><stop offset="1" stop-color="#d7b56f" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1920" height="1080" fill="url(#sky)"/>
+<circle cx="380" cy="270" r="250" fill="url(#moon)"/>
+<path d="M0 600L180 410 310 520 470 330 650 540 810 400 990 600 1200 390 1390 520 1570 360 1760 500 1920 420V1080H0Z" fill="#101517"/>
+<path d="M0 720L250 560 420 650 620 520 820 670 1010 540 1210 690 1450 520 1660 650 1920 560V1080H0Z" fill="#0a0e10"/>
+<g fill="#080b0d" stroke="#2b251e" stroke-width="3">
+ <path d="M1320 520h360v330h-360z"/>
+ <path d="M1290 520l210-230 210 230z"/>
+ <path d="M1370 380h55v140h-55zM1575 380h55v140h-55z"/>
+ <path d="M1397 338l-40 42h80zM1602 338l-40 42h80z"/>
+ <rect x="1465" y="600" width="70" height="250"/>
+ <rect x="1355" y="610" width="42" height="80"/><rect x="1605" y="610" width="42" height="80"/>
+</g>
+<path d="M0 890C330 760 650 860 980 810c310-48 600-10 940 80v190H0Z" fill="#050708"/>
+<g fill="#12191c" opacity=".85">
+ <path d="M90 880l90-270 90 270zM210 900l120-360 120 360zM500 890l100-300 100 300zM1720 900l110-330 110 330z"/>
+</g>
+</svg>
