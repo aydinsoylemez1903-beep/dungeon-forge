@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520">
+<defs>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3d89d"/><stop offset=".3" stop-color="#9b6b31"/><stop offset=".55" stop-color="#f0bf63"/><stop offset="1" stop-color="#5a3919"/></linearGradient>
+ <filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".75"/></filter>
+</defs>
+<g filter="url(#shadow)">
+ <path d="M140 92 L280 44 L600 78 L920 44 L1060 92 L1014 174 L1110 258 L1002 342 L1036 430 L816 404 L600 482 L384 404 L164 430 L198 342 L90 258 L186 174Z" fill="#0b1013" stroke="url(#metal)" stroke-width="18"/>
+ <path d="M602 18l38 82-38 44-38-44z" fill="#181d20" stroke="#d0a257" stroke-width="10"/>
+ <path d="M602 28v106" stroke="#ead39c" stroke-width="8"/>
+ <path d="M576 66h52" stroke="#ead39c" stroke-width="8"/>
+ <text x="600" y="255" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="118" fill="url(#metal)" stroke="#17110b" stroke-width="4">DUNGEON</text>
+ <text x="600" y="360" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="128" fill="url(#metal)" stroke="#17110b" stroke-width="4">FORGE</text>
+ <text x="600" y="415" text-anchor="middle" font-family="Georgia,serif" font-size="34" letter-spacing="10" fill="#c99a50">KADERİNİ SEN YAZ</text>
+</g>
+</svg>
