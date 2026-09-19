@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1000">
+<defs>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c7b28d"/><stop offset=".25" stop-color="#5d6670"/><stop offset=".6" stop-color="#222a30"/><stop offset="1" stop-color="#8f7449"/></linearGradient>
+<linearGradient id="cape" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#23364a"/><stop offset="1" stop-color="#0b1018"/></linearGradient>
+<linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6a276"/><stop offset="1" stop-color="#9f6c4c"/></linearGradient>
+</defs>
+<path d="M175 965L225 470Q350 390 475 470L525 965Z" fill="url(#cape)" opacity=".9"/>
+<path d="M260 180Q350 105 440 180L425 330Q350 385 275 330Z" fill="url(#skin)" stroke="#2a1d18" stroke-width="10"/>
+<path d="M260 190Q275 115 350 105Q430 118 447 205Q408 167 365 165Q315 166 260 190Z" fill="#221912"/>
+<path d="M292 220Q315 204 337 220M363 220Q388 204 412 221" stroke="#3b281e" stroke-width="9" fill="none"/>
+<path d="M327 280Q350 295 373 280" stroke="#71452f" stroke-width="8" fill="none"/>
+<path d="M278 307Q350 350 425 307Q405 375 350 392Q295 373 278 307Z" fill="#332219"/>
+<path d="M214 440Q350 365 486 440L520 690L440 760H260L180 690Z" fill="url(#steel)" stroke="#14191c" stroke-width="14"/>
+<path d="M247 430L350 508L453 430L420 610H280Z" fill="#242b31" stroke="#b18a50" stroke-width="7"/>
+<circle cx="350" cy="495" r="27" fill="#bd8b3d" stroke="#f1ca77" stroke-width="6"/>
+<path d="M180 478L84 555L125 770L205 735L214 540Z" fill="url(#steel)" stroke="#14191c" stroke-width="14"/>
+<path d="M520 478L616 555L575 770L495 735L486 540Z" fill="url(#steel)" stroke="#14191c" stroke-width="14"/>
+<path d="M235 760L318 760L300 972H205Z" fill="url(#steel)" stroke="#14191c" stroke-width="14"/>
+<path d="M382 760L465 760L495 972H400Z" fill="url(#steel)" stroke="#14191c" stroke-width="14"/>
+<path d="M103 740L170 722L255 965H205Z" fill="#4f5558"/>
+<path d="M545 740L603 715L484 957L430 925Z" fill="#4f5558"/>
+<path d="M150 910L125 960H270L246 920Z" fill="#191e21"/>
+<path d="M430 920L410 960H560L528 910Z" fill="#191e21"/>
+</svg>

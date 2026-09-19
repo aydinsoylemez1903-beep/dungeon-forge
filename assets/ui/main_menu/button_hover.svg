@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120">
+<defs>
+ <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#332416"/><stop offset="1" stop-color="#111517"/></linearGradient>
+</defs>
+<path d="M35 8 H565 L592 60 565 112 H35 L8 60Z" fill="url(#g)" stroke="#d39b45" stroke-width="8" filter="url(#glow)"/>
+<path d="M48 18 H552 L579 60 552 102 H48 L21 60Z" fill="none" stroke="#f3c46f" stroke-width="4"/>
+<path d="M76 27 H524" stroke="#ffe0a1" stroke-width="2" opacity=".8"/>
+<circle cx="35" cy="60" r="6" fill="#ffd27d"/><circle cx="565" cy="60" r="6" fill="#ffd27d"/>
+</svg>
